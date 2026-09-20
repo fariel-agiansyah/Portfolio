@@ -7,7 +7,6 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
 /* Typography + theme polish */
-500;600;700&family=Poppins:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 :root{font-family:"Inter",ui-sans-serif,system-ui,sans-serif}
 body{font-family:"Inter",ui-sans-serif,system-ui,sans-serif}
 h1,h2,h3,h4,.hero-copy h1,.page-intro h1,.contact-card h1,.home-card h2,.diary-card h2,.diary-modal h2,.lab-row h2,.now-grid h2{font-family:"Space Grotesk","Inter",sans-serif;font-weight:600}
