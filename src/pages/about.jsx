@@ -1,17 +1,1 @@
-function About({ preview = false }) {
-  return (
-    <section id="about" className="section shell about">
-      <div className="section-heading reveal"><p className="eyebrow">02 / ABOUT</p><h2>Design first, technology where it helps.</h2></div>
-      <div className="about-grid">
-        <div className="about-statement reveal"><p>I work across visual design and front-end development, with a focus on communication, layout, typography, and practical digital experiences.</p></div>
-        <div className="about-details reveal reveal-delay">
-          <div><span className="detail-label">Focus</span><p>Visual Design<br />Web Design<br />Creative Development</p></div>
-          <div><span className="detail-label">Tools</span><p>Photoshop<br />React / Vite<br />Supabase</p></div>
-          {!preview && <div><span className="detail-label">Currently</span><p>Building a personal portfolio and documenting selected work.</p></div>}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export default About;
+function About(){return <section className="page-shell"><div className="page-intro"><div><p className="eyebrow">06 / ABOUT</p><h1>Designer,<br/><span>communicator, builder.</span></h1></div><p className="page-intro-copy">I’m M. Fariel Agiansyah, a Communication Science student at Universitas Tidar with a DKV background from SMK Negeri 1 Magelang. My work sits between visual design, digital communication, and building things for the web.</p></div><div className="about-story"><div className="about-story-main"><p>I like work that has a visible result. A feed that suddenly makes sense. A website that feels obvious to use. A video that lands at the right moment. A system that turns a messy workflow into something manageable.</p><p>My experience moves across visual design, social media, content production, web development, photography, videography, editing, motion, and communication. I’ve worked through campus organizations, creative production, and an internship environment where design had to meet real communication goals.</p></div><div className="about-facts"><div><span className="detail-label">Education</span><p>S1 Ilmu Komunikasi<br/>Universitas Tidar<br/><br/>DKV<br/>SMK Negeri 1 Magelang</p></div><div><span className="detail-label">Experience</span><p>Telkomsel HCOT internship<br/>HMIK Untidar — Head of Business Division<br/>REDICATOR — Vice Chair<br/>Nirkala Production — DoP</p></div><div><span className="detail-label">Tools</span><p>Photoshop · Illustrator · Figma<br/>HTML · CSS · JavaScript<br/>React · Vite · Supabase<br/>Content planning · Copywriting · Editing</p></div></div></div></section>}export default About;
