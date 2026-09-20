@@ -193,4 +193,38 @@ For a local copy that should exactly match origin/main, after confirming there a
 
 Do not use git restore . blindly because it can discard unrelated local work.
 
+
+
+## Content management architecture
+
+The portfolio is planned as two experiences backed by the same project:
+
+### Public site
+- Read-only portfolio, diary, gallery, and profile content.
+- Visitors can open project detail pages and external links.
+- No create, edit, or delete controls.
+- Public content should be served from rows marked as published/visible.
+
+### Developer / admin site
+- Separate route such as `/admin`.
+- Supabase Auth protects the admin area.
+- CRUD for projects, diary posts, gallery items, tags, links, and profile content.
+- Supabase Storage can hold project thumbnails, full-size design images, and profile photography.
+- Database Row Level Security (RLS) must restrict writes to the authorized admin user.
+- The browser should only use a Supabase publishable/anon key. Service-role credentials must never be placed in the frontend.
+
+### Suggested data model
+- `profiles`: profile/about information and portrait metadata.
+- `projects`: title, slug, category, year, description, role, stack, links, cover image, published flag, sort order.
+- `project_media`: multiple images/screenshots for a project.
+- `diary_posts`: title, slug, excerpt, body, category, tags, published flag, published_at.
+- `media`: reusable uploaded assets and storage paths.
+- `site_settings`: small global settings such as availability/status.
+
+This keeps the public website simple while giving the developer version a proper CMS-like workflow. Supabase is useful here because the portfolio is no longer just a static collection of files. It becomes a content system where new work can be added without editing React source code every time.
+
+### Implementation boundary
+
+The current repository can handle the frontend architecture and UI. The next backend step requires a Supabase project with Auth, Postgres tables, RLS policies, and Storage buckets. Those database/security pieces should be created deliberately rather than faked in the frontend, because hiding an "Edit" button is not security.
+
 Status: personal website V2 / active development
