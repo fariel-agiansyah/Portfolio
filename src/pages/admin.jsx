@@ -81,7 +81,7 @@ function Admin(){
       <div><p className="eyebrow">PRIVATE / ADMIN</p><h1>Portfolio control room.</h1><p>Signed in as {session.user.email}</p></div>
       <button className="button button-light" onClick={async()=>{await supabase.auth.signOut();window.location.href="/admin/login"}}>Sign out</button>
     </div>
-    <div className="admin-tabs">
+    <div className="admin-tabs"><p className="admin-upload-note">Media uploads are available from the admin workspace.</p>
       {["projects","diary","profile"].map(x=><button key={x} className={tab===x?"active":""} onClick={()=>setTab(x)}>{x}</button>)}
     </div>
     {message&&<p className="admin-message">{message}</p>}
