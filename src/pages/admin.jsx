@@ -45,7 +45,7 @@ function Admin(){
   },[]);
 
   async function refresh(){
-    const [{data:p},{data:d},{data:pr}]=await Promise.all([
+    const [{data:p},{data:d},{data:pr},{data:m}]=await Promise.all([
       supabase.from("projects").select("*").order("sort_order").order("created_at",{ascending:false}),
       supabase.from("diary_posts").select("*").order("created_at",{ascending:false}),
       supabase.from("site_profile").select("*").single(),
