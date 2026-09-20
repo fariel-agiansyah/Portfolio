@@ -1,115 +1,154 @@
-# Fariel Agiansyah — Portfolio
+# Fariel Agiansyah — Personal Web
 
-Personal portfolio website for M Fariel Agiansyah, focused on visual design, web design, creative development, and selected digital projects.
-
-## Goal
-Build a simple, modern, professional portfolio that feels intentionally designed rather than like a generic template. V1 is the foundation. Real images, final copy, links, case studies, and additional features can be added later.
+A personal website that grew out of a portfolio: work archive, diary, experiments, current focus, about page, and contact space.
 
 ## Stack
 - React 19
-- Vite
-- JavaScript / JSX
-- CSS
+- Vite 8
+- Tailwind CSS 4 via `@tailwindcss/vite`
+- CSS variables for the visual system
+- Native history-based routing
 - GitHub
 
-Icons are isolated in src/components/icon.jsx so the icon system can later be replaced with Lucide, Heroicons, Feather, or another library.
+## Routes
+- `/`
+- `/works`
+- `/works/:slug`
+- `/diary`
+- `/lab`
+- `/about`
+- `/now`
+- `/contact`
 
-## Structure
-- src/components: reusable UI
-- src/data/projects.js: project/content source
-- src/pages: page-level sections and project detail
-- src/App.jsx: lightweight history-based routing
-- src/index.css: global visual system
-- public/images: future project assets
+## Product direction
 
-## Design direction
-Minimal, editorial, modern, professional, typography-led, and web-designer oriented.
+This is intentionally more than a portfolio. The sidebar makes it feel like a personal workspace rather than a static landing page.
 
-Keep:
-- generous whitespace
-- strong typography
-- neutral/off-white surfaces
-- dark text
-- subtle borders
-- restrained accent color
-- subtle motion and hover states
+- **Home:** identity, photo area, current status, and quick entry points.
+- **Works:** visual design, web, content, and product projects.
+- **Diary:** build logs, reflections, notes, and future journal entries.
+- **Lab:** unfinished experiments and ideas.
+- **About:** education, experience, tools, and working philosophy.
+- **Now:** a living snapshot of current focus.
+- **Contact:** external contact points and work CTA.
+
+## Visual direction
+
+Rounded, editorial, creative, blue-accented, interactive, and restrained.
+
+The current system includes:
+- rounded cards and panels
+- blue accent instead of an all-blue interface
+- subtle gradients
+- light/dark mode
+- fixed desktop sidebar
+- mobile top bar and bottom navigation
+- custom thin scrollbar
+- hover movement and border transitions
+- diary modal popup
 - responsive layouts
 - reduced-motion support
 
-Avoid:
-- excessive gradients
-- excessive rounded cards
-- emoji-heavy UI
-- noisy animations
-- generic AI-template aesthetics
-- unnecessary dependencies
+Avoid generic AI-template aesthetics, excessive emoji, noisy animation, and effects that compete with the actual work.
 
-## Routes
-- /
-- /works
-- /about
-- /contact
-- /works/:slug
+## Personal context currently represented
 
-The app currently uses a small native history router. Do not add React Router unless the site grows enough to justify it.
+M. Fariel Agiansyah is a Communication Science student at Universitas Tidar with a DKV background from SMK Negeri 1 Magelang.
 
-## Project data
-Projects are data-driven through src/data/projects.js. Each project has id, slug, title, category, year, description, role, stack, image, featured, liveUrl, and githubUrl.
+Relevant experience represented in the site includes:
+- Telkomsel HCOT internship work
+- IndiHome Yogya social-media and promotional design
+- HMIK Untidar business division leadership
+- REDICATOR
+- Nirkala Production as DoP
 
-Images are intentionally blank in V1. Never invent project screenshots or artwork.
+The site also represents a broad creative/technical workflow around visual design, social media, content production, web development, photography, videography, editing, motion, content planning, copywriting, Photoshop, Illustrator, Figma, HTML, CSS, JavaScript, React, Vite, and Supabase.
 
-Current starting projects:
-1. Internary: internship management dashboard.
-2. IndiHome Yogya: visual and promotional social media work.
-3. Personal Design Archive: placeholder for future selected design work.
+## Diary and Supabase
 
-## AI continuation instructions
-READ THIS README BEFORE CHANGING THE REPOSITORY. DO NOT RESTART FROM A BLANK VITE TEMPLATE.
+The Diary currently uses local seed content in `src/data/diary.js`.
 
-This repository is a living personal portfolio. Inspect the existing implementation first. Preserve the architecture and visual direction unless the user explicitly requests a redesign.
+**Supabase is not required yet.**
 
-When extending:
-1. Keep project content in src/data/projects.js.
-2. Keep reusable UI in src/components/.
-3. Keep page sections in src/pages/.
-4. Avoid unnecessary dependencies.
-5. Preserve responsive behavior and accessibility.
-6. Preserve reduced-motion support.
-7. Use subtle animation rather than decorative motion.
-8. Keep image placeholders until real assets are provided.
-9. Run npm run build and npm run lint after substantial changes.
-10. Do not replace working architecture merely to use a different coding style.
+A local data file is simpler and more reliable while the Diary is still a public static feature.
 
-The portfolio should evolve incrementally. If a feature conflicts with the existing visual system, explain the trade-off and implement the smallest maintainable change.
+Supabase becomes useful when Diary needs:
+- create/edit/delete entries from an admin interface
+- authentication
+- private drafts
+- syncing content across devices
+- image/file uploads through Storage
+- categories/tags stored in a database
+- scheduled publishing
+- comments or reactions
 
-## Intentional V1 placeholders
-- project images
-- galleries
-- real contact email
-- social links
-- CV link
-- final personal copy
-- favicon/brand assets
-- detailed case studies
-- final icon library
-- SEO/Open Graph metadata
+When that stage arrives, use Supabase Auth + Postgres + Storage with RLS. Do not add a database just to render four static diary cards. Humanity has suffered enough from unnecessary CRUD dashboards.
 
-## Future ideas
-Possible later additions: project case studies, image lightboxes, category filters, CV download, social links, contact form, SEO/Open Graph metadata, analytics, or a CMS.
+## Responsive design
 
-## Local development
+Tailwind CSS 4 is installed through the Vite plugin and is available for utility-based component work. The current visual system also uses a focused custom CSS layer for the portfolio's typography, theme variables, scrollbar, rounded surfaces, and responsive breakpoints.
+
+The responsive experience uses:
+- desktop fixed sidebar
+- mobile top bar
+- mobile bottom navigation
+- one-column mobile project/diary layouts
+- responsive hero/photo layout
+- touch-friendly controls
+
+## Content architecture
+
+- `src/data/projects.js`: project data
+- `src/data/diary.js`: diary seed content
+- `src/components/`: reusable UI
+- `src/pages/`: route pages
+- `src/index.css`: theme, responsive visual system, scrollbar, motion
+- `src/App.jsx`: lightweight routing
+
+## Development
+
+```
 npm install
 npm run dev
 npm run build
 npm run lint
-npm run preview
+```
 
-Do not commit node_modules/.
+Do not commit `node_modules/`.
 
-## Deployment
-This is a Vite SPA. Vercel, Netlify, or GitHub Pages can host it. Client-side routes need an index.html fallback on the hosting platform.
+## AI continuation instructions
 
-## Continuation brief
-This is the personal portfolio of M Fariel Agiansyah. It is a React + Vite portfolio focused on visual design, web design, creative development, and selected projects. The visual language is minimal, editorial, modern, professional, typography-focused, and restrained. Avoid generic AI-template aesthetics, excessive gradients, excessive rounded cards, emoji-heavy UI, and unnecessary dependencies. Read README.md and inspect the existing code before making changes. Keep project data in src/data/projects.js, reusable UI in src/components/, and page sections in src/pages/. V1 intentionally uses image placeholders. Current routes are /, /works, /about, /contact, and /works/:slug using a lightweight native history router. Improve the existing system instead of replacing it from zero unless there is a technical reason. Preserve responsive behavior, accessibility, subtle animation, and reduced-motion support.
+Read this README and inspect the existing implementation before changing the project. This is a living personal website, not a disposable Vite demo.
 
-Status: V1 foundation / active development
+Preserve:
+1. rounded UI and responsive behavior
+2. blue accent without making everything blue
+3. light/dark mode
+4. desktop sidebar + mobile navigation
+5. subtle hover/motion and reduced-motion support
+6. data-driven project and diary content
+7. accessibility and maintainable components
+8. Tailwind as the responsive/utility foundation
+9. the distinction between public content and future private/admin content
+
+Do not restart from a blank template or replace working architecture merely for stylistic reasons.
+
+## Future features
+
+Potential next additions, in roughly natural product order:
+- real profile/project images
+- project case-study galleries and lightbox
+- CV / Resume page
+- Skills / toolkit page
+- Gallery / visual archive
+- social links
+- real contact email/form
+- Diary search/filter
+- Supabase-powered private editor
+- authentication and admin dashboard
+- image storage
+- analytics
+- SEO/Open Graph metadata
+- RSS/feed for Diary
+
+Status: personal website V2 / active development
