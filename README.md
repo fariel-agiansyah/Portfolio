@@ -46,8 +46,12 @@ The current system includes:
 - custom thin scrollbar
 - hover movement and border transitions
 - diary modal popup
+- search and category filtering on Works and Diary
+- automatic pagination for growing project/diary archives
 - responsive layouts
 - reduced-motion support
+- Inter + Space Grotesk + Poppins typography system
+- Google Fonts loaded from index.html to keep PostCSS/Tailwind parsing clean
 
 Avoid generic AI-template aesthetics, excessive emoji, noisy animation, and effects that compete with the actual work.
 
@@ -102,7 +106,10 @@ The responsive experience uses:
 - `src/data/diary.js`: diary seed content
 - `src/components/`: reusable UI
 - `src/pages/`: route pages
-- `src/index.css`: theme, responsive visual system, scrollbar, motion
+- `src/index.css`: theme, typography, responsive visual system, scrollbar, motion, search/pagination UI
+- `src/components/sidebar.jsx`: desktop sidebar, mobile top bar, mobile bottom navigation, theme toggle
+- `src/components/project-grid.jsx`: project search, category filtering, pagination
+- `src/pages/diary.jsx`: diary search, category filtering, pagination, modal reader
 - `src/App.jsx`: lightweight routing
 
 ## Development
@@ -150,5 +157,40 @@ Potential next additions, in roughly natural product order:
 - analytics
 - SEO/Open Graph metadata
 - RSS/feed for Diary
+
+## Recent update
+
+The latest visual and interaction pass focused on making the site feel like a consistent personal workspace instead of a collection of disconnected pages.
+
+### Typography
+- **Inter** is the primary UI/body font.
+- **Space Grotesk** is used for large headings and display text.
+- **Poppins** is used for compact labels, metadata, navigation, and supporting UI.
+- Fonts are loaded in index.html, not from a late CSS @import, because Tailwind/PostCSS requires CSS imports to appear before other declarations.
+
+### Theme and layout
+- Light mode colors were refined for clearer surface/border contrast.
+- Dark mode remains the current visual reference.
+- The hero name layout was adjusted so "Fariel Agiansyah." does not collide with the profile/photo panel.
+- Desktop keeps a fixed sidebar. Mobile switches to a top bar plus bottom navigation.
+- The sidebar includes theme switching, availability status, current focus, and navigation state.
+
+### Search and pagination
+- Works supports keyword search across title, category, description, role, and stack.
+- Works supports category filtering.
+- Diary supports keyword search across title, category, excerpt, body, and tags.
+- Diary supports category filtering.
+- Pagination is data-driven and only appears when the filtered collection exceeds the page size.
+
+### Troubleshooting note
+If the local sidebar suddenly renders as plain text while the main page remains styled, check git status first. The repository's current src/index.css contains the sidebar layout rules. A locally modified or stale src/index.css can produce a partially styled page.
+
+For a local copy that should exactly match origin/main, after confirming there are no CSS changes worth keeping:
+
+    git restore src/index.css
+    git pull origin main
+    npm run dev
+
+Do not use git restore . blindly because it can discard unrelated local work.
 
 Status: personal website V2 / active development
