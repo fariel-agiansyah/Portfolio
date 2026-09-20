@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react";
 import Icon from "../components/icon";
 import projectsSeed from "../data/projects";
-import { supabase,isSupabaseConfigured } from "../lib/supabase";
+import { supabase,isSupabaseConfigured,getStorageUrl } from "../lib/supabase";
 
 function ProjectDetail({slug}){
   const [project,setProject]=useState(()=>projectsSeed.find(item=>item.slug===slug));
@@ -12,7 +12,7 @@ function ProjectDetail({slug}){
     (async()=>{
       const {data}=await supabase.from("projects").select("*").eq("slug",slug).eq("published",true).maybeSingle();
       if(!active||!data)return;
-      setProject({...data,image:data.cover_path||"",stack:data.stack||[],githubUrl:data.github_url||"",liveUrl:data.live_url||""});
+      setProject({...data,image:getStorageUrl(data.cover_path)||"",stack:data.stack||[],githubUrl:data.github_url||"",liveUrl:data.live_url||""});
     })();
     return()=>{active=false};
   },[slug]);
