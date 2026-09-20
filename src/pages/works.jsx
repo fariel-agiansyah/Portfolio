@@ -1,16 +1,1 @@
-import ProjectGrid from "../components/project-grid";
-import Icon from "../components/icon";
-
-function Works({ preview = false }) {
-  return (
-    <section id="works" className="section shell works">
-      <div className="section-heading reveal">
-        <div><p className="eyebrow">01 / SELECTED WORKS</p><h2>{preview ? "A selection of things I’ve made." : "Projects, experiments, and client work."}</h2></div>
-        {preview && <a className="text-link" href="/works" data-route>View all <Icon name="arrow" size={16} /></a>}
-      </div>
-      <ProjectGrid featuredOnly={preview} />
-    </section>
-  );
-}
-
-export default Works;
+import ProjectGrid from "../components/project-grid";import Icon from "../components/icon";function Works(){return <section className="page-shell"><div className="page-intro"><div><p className="eyebrow">02 / WORKS</p><h1>Selected work,<br/><span>made with intent.</span></h1></div><p className="page-intro-copy">Visual design, web development, social content, and personal products. Some are polished deliverables, some are systems I built because the problem annoyed me enough.</p></div><ProjectGrid/><a className="wide-link" href="/contact" data-route>Have a project in mind? <Icon name="arrow" size={17}/></a></section>}export default Works;
