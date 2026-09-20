@@ -14,6 +14,16 @@ function Hero() {
           <a className="text-link" href="/about" data-route>More about me <Icon name="arrow" size={16} /></a>
         </div>
       </div>
+
+      <div className="hero-photo reveal reveal-delay" aria-label="Profile photo placeholder">
+        <div className="hero-photo-placeholder">
+          <div>
+            <strong>Profile photo</strong>
+            <span>Place your portrait here</span>
+          </div>
+        </div>
+      </div>
+
       <div className="hero-meta reveal reveal-delay">
         <span>Based in Yogyakarta, Indonesia</span>
         <span>Design / Development / Content</span>
