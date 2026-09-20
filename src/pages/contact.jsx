@@ -1,17 +1,1 @@
-import Icon from "../components/icon";
-
-function Contact() {
-  return (
-    <section id="contact" className="contact section shell">
-      <div className="contact-inner reveal">
-        <p className="eyebrow">03 / CONTACT</p>
-        <h2>Have a project in mind?</h2>
-        <p>For design work, web projects, collaborations, or just a useful conversation, you can reach me here.</p>
-        <a className="button button-light" href="mailto:hello@example.com">Get in touch <Icon name="arrow" size={17} /></a>
-      </div>
-      <footer className="site-footer"><span>© 2026 M Fariel Agiansyah</span><span>Yogyakarta, Indonesia</span></footer>
-    </section>
-  );
-}
-
-export default Contact;
+import Icon from "../components/icon";function Contact(){return <section className="page-shell contact-page"><div className="contact-card"><p className="eyebrow">07 / CONTACT</p><h1>Let’s make<br/><span>something useful.</span></h1><p>For design work, web projects, creative collaboration, content, or a conversation about an idea that needs to become real.</p><div className="contact-actions"><a className="button button-light" href="https://github.com/fariel-agiansyah" target="_blank" rel="noreferrer">GitHub <Icon name="github" size={17}/></a><a className="button button-light" href="/works" data-route>See my work <Icon name="arrow" size={17}/></a></div></div><footer className="site-footer"><span>© 2026 M Fariel Agiansyah</span><span>Yogyakarta, Indonesia</span></footer></section>}export default Contact;
