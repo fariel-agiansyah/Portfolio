@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { supabase, isSupabaseConfigured } from "../lib/supabase";
+import { supabase, isSupabaseConfigured, getStorageUrl } from "../lib/supabase";
 import Icon from "./icon";
 import projectsSeed from "../data/projects";
 import ProjectCard from "./project-card";
@@ -18,7 +18,7 @@ function ProjectGrid({featuredOnly=false}){
     (async()=>{
       const {data,error}=await supabase.from("projects").select("*").eq("published",true).order("sort_order").order("created_at",{ascending:false});
       if(!active||error||!data)return;
-      setProjects(data.map(p=>({...p,id:p.id,image:p.cover_path||"",stack:p.stack||[],githubUrl:p.github_url||"",liveUrl:p.live_url||""})));
+      setProjects(data.map(p=>({...p,id:p.id,image:getStorageUrl(p.cover_path)||"",stack:p.stack||[],githubUrl:p.github_url||"",liveUrl:p.live_url||""})));
     })();
     return()=>{active=false};
   },[]);
